@@ -1,0 +1,76 @@
+body {
+  background-color: #121212;
+  font-family: "Open Sans", sans-serif;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 95vh;
+  width: 95vw;
+  justify-content: center;
+}
+#timeText {
+  color: #ffffff;
+  font-size: 25vmin;
+  transition: all 1s;
+}
+.rainbow {
+  background: repeating-linear-gradient(
+    -45deg,
+    red 0%,
+    yellow 7.14%,
+    rgb(0, 255, 0) 14.28%,
+    rgb(0, 255, 255) 21.4%,
+    cyan 28.56%,
+    blue 35.7%,
+    magenta 42.84%,
+    red 50%
+  );
+  background-size: 600vw 600vw;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: slide 8s linear infinite forwards;
+}
+@keyframes slide {
+  0% {
+    background-position-x: 0%;
+  }
+  100% {
+    background-position-x: 600vw;
+  }
+}
+
+#subText {
+  color: #ffffff;
+  font-size: 7vmin;
+  margin-top: 5vh;
+  transition: 0.5s all;
+}
+#submit {
+  height: 10vmax;
+  width: 20vmax;
+  margin-top: 10vh;
+  font-size: 5vmax;
+  text-align: center;
+  background-color: #ffffff;
+  color: black;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.5s;
+}
+
+.submit:hover {
+  background-color: rgb(106, 240, 150) !important;
+}
+.submit:active {
+  background-color: rgb(7, 156, 57) !important;
+}
+
+.stopAlarm:hover {
+  background-color: rgb(236, 109, 109) !important;
+}
+.stopAlarm:active {
+  background-color: rgb(199, 25, 25) !important;
+}

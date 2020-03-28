@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Budzik</title>
     <link rel="stylesheet" type="text/css" href="css/materialize.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
   </head>
   <body>
-    <input type="text" class="timepicker" />
+    <div class="container">
+      <span id="timeText" class="timepicker">00:00</span>
+      <span id="subText">Wybierz godzinę budzenia powyżej</span>
+      <button class="submit" id="submit">Nastaw</button>
+    </div>
     <script src="js/materialize.js"></script>
-    <script src="js/timePicker.js"></script>
+    <script src="js/alarm.js"></script>
   </body>
 </html>

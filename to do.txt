@@ -1,0 +1,5 @@
+Time picker:
+https://materializecss.com/pickers.html i po prawej dać na time picker
+
+TO-DO:
+1. Gdy czas minie, rozpoczyna się piosenka, którą można wyłączyć poprzez kliknięcie submita.
