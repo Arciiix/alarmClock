@@ -16,7 +16,8 @@ let picker = M.Timepicker.init(pickerElem, options);
 pickerElem.addEventListener("change", () => {
   timeText.innerText = pickerElem.value;
 });
-subText.addEventListener("click", deleteAlarm);
+
+let audio = new Audio("song.mp3");
 
 //local storage
 if (localStorage.getItem("alarm")) {
@@ -67,10 +68,21 @@ function setAlarm() {
   if (destinationDate < currDate) {
     destinationDate.setTime(destinationDate.getTime() + 86400000); //Add 24 hours (1 day) to the date, when expired
   }
-  interval = setInterval(alarm, 750);
+  timeText.innerText = `${formatTime(hours)}:${formatTime(minutes)}`;
   hideElements();
-  localStorage.setItem("alarm", destinationDate.getTime());
+  document.title = "ALARM WYŁĄCZONY";
   submit.removeEventListener("click", executeSetAlarm);
+}
+
+function turnOn() {
+  subText.innerHTML = `ALARM WŁĄCZONY NA <b>${formatTime(hours)}:${formatTime(
+    minutes
+  )}</b>`;
+  subText.style.color = "#1dc267";
+  subText.removeEventListener("click", turnOn);
+  interval = setInterval(alarm, 750);
+  localStorage.setItem("alarm", destinationDate.getTime());
+  subText.addEventListener("click", deleteAlarm);
 }
 
 function alarm() {
@@ -108,6 +120,7 @@ function alarmStop() {
   subText.innerHTML = "<b>CZAS MINĄŁ</b>";
   subText.style.fontSize = "15vmin";
   subText.style.color = "#f0422b";
+  subText.removeEventListener("click", deleteAlarm);
 
   submit.style.opacity = 1;
   submit.classList.remove("submit");
@@ -116,8 +129,11 @@ function alarmStop() {
   submit.addEventListener("click", destoryAlarm);
 
   document.title = "CZAS MINĄŁ";
+
+  audio.play();
 }
 function destoryAlarm() {
+  audio.pause();
   localStorage.removeItem("alarm");
   location.reload();
 }
@@ -135,15 +151,14 @@ function hideElements() {
   submit.style.opacity = 0;
   timeText.style.fontSize = "40vmin";
   timeText.addEventListener("click", () => picker.destroy());
-  subText.innerHTML = `ALARM WŁĄCZONY NA <b>${formatTime(hours)}:${formatTime(
-    minutes
-  )}</b>`;
-  subText.style.color = "#1dc267";
+  subText.innerHTML = `<b>ALARM WYŁĄCZONY</b>`;
+  subText.style.color = "#db6c2c";
+  subText.addEventListener("click", turnOn);
 }
 
 function deleteAlarm() {
   subText.style.color = "rgb(236, 109, 109)";
-  subText.innerHTML = "<b>Alarm został wyłączony...</b>";
+  subText.innerHTML = "Alarm został wyłączony...";
   localStorage.removeItem("alarm");
   document.title = "Wyłączono alarm...";
   setTimeout(() => {

@@ -2,4 +2,6 @@ Time picker:
 https://materializecss.com/pickers.html i po prawej dać na time picker
 
 TO-DO:
-1. Gdy czas minie, rozpoczyna się piosenka, którą można wyłączyć poprzez kliknięcie submita.
+1. Sciszyć piosenkę
+2. Zrobić favicon
+3. Zrobić funkcję tytułów alarmów - np. ustawiamy tytuł herbata i po zadzwonieniu też się on wyświetli.
